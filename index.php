@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Fyn Invitational 2017</title>
+    <title>Wir Wolfen</title>
 
     <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <!-- Bootstrap -->
@@ -22,15 +25,14 @@
 
 
 <body>
-<div class="container">
-    <div class="jumbotron">
-            <h1>Wir Wolfen</h1>
-    </div>
-<div id="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Wir Wolfen</h1>
+        </div>
+    </section>
+    <div id="main">
 
 <?php
-session_start();
-
 if (isset($_GET['restart'])) {
     session_destroy();
     echo "<form method='post' action='index.php'>
@@ -38,7 +40,7 @@ if (isset($_GET['restart'])) {
         Player 2 <input type='text' name='two' /><br />
         Player 3 <input type='text' name='three' /><br />
         Player 4 <input type='text' name='four' /><br /><br />
-        <input type='submit'>
+        <input type='submit' class='btn btn-primary'>
     </form>";
 }
 
@@ -60,8 +62,8 @@ if (!isset($_GET['restart'])) {
 
 }
 
-echo "<br /><a href='index.php'>Shuffle</a><br /><br />";
-echo "<a href='index.php?restart=1'>Restart</a>";
+echo "<br /><a href='index.php'><button type=\"button\" class=\"btn btn-success\">Shuffle</button></a><br /><br />";
+echo "<a href='index.php?restart=1'><button type=\"button\" class=\"btn btn-danger\">Restart</button></a>";
 ?>
 
     </div>

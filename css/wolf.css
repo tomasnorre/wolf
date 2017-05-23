@@ -1,8 +1,12 @@
-.jumbotron,
+.jumbotron-heading,
 div#main {
   text-align: center;
 }
 
+div#main {
+  font-size: 20px;
+}
 input {
   margin-bottom: 10px;
 }
+
