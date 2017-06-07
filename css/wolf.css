@@ -10,3 +10,20 @@ input {
   margin-bottom: 10px;
 }
 
+div.tee {
+  display: inline-block;
+  width: 200px;
+  border: 1px solid black;
+}
+
+div.yellow {
+  background-color: yellow;
+}
+
+div.blue {
+  background-color: dodgerblue;
+}
+
+div.red {
+  background-color: indianred;
+}

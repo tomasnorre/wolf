@@ -35,25 +35,41 @@ session_start();
 <?php
 if (isset($_GET['restart'])) {
     session_destroy();
+    $_SESSION['randomTee'] = false;
+
     echo "<form method='post' action='index.php'>
         Player 1 <input type='text' name='one' /><br />
         Player 2 <input type='text' name='two' /><br />
         Player 3 <input type='text' name='three' /><br />
-        Player 4 <input type='text' name='four' /><br /><br />
+        Player 4 <input type='text' name='four' /><br />
+        Random Tee <input type='checkbox' name='randomTee'><br /><br />
         <input type='submit' class='btn btn-primary'>
     </form>";
 }
 
+
 if (!isset($_GET['restart'])) {
 
     if (empty($_SESSION['players'])){
-        foreach($_POST as $post) {
+        foreach($_POST as $key => $post) {
+            if ($key === 'randomTee') {
+                $_SESSION['randomTee'] = true;
+                continue;
+            }
             $_SESSION['players'][] = $post;
         }
     }
 
     if (!empty($_SESSION['players'])){
-        echo "Play order: <br /><br />";
+
+        if ($_SESSION['randomTee']) {
+            $teeArray = ['white', 'yellow', 'blue', 'red'];
+            shuffle($teeArray);
+            $tee = array_pop($teeArray);
+            echo '<div class="tee ' . $tee . '">TeeBox: ' . $tee . '</div>';
+        }
+
+        echo "<br />Play order: <br /><br />";
         shuffle($_SESSION['players']);
         foreach($_SESSION['players'] as $player) {
             echo $player . "<br />";
